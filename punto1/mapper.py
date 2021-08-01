@@ -9,4 +9,6 @@ for linea in sys.stdin:
     # split the linea into words
     datosVenta = linea.split()
     # increase counters
-    print('%s\t%s\t%s' % (datosVenta[0], datosVenta[1], datosVenta[2]))
+    datosVenta[1] = datosVenta[1].lower()
+    if datosVenta[1] == 'mayo' or datosVenta[1] == 'julio' or datosVenta[1] == 'diciembre':
+        print('%s\t%s' % (datosVenta[0], datosVenta[2]))
