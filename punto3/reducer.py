@@ -24,7 +24,9 @@ for line in sys.stdin:
     # convert venta (currently a string) to int
     try:
         venta = int(venta)
-
+        if menor == 0:
+            menor = total_actual
+            mes_menor = mes_actual
     except ValueError:
         # venta was not a number, so silently
         # ignore/discard this line
@@ -34,15 +36,15 @@ for line in sys.stdin:
     # by key (here: mes) before it is passed to the reducer
     if mes_actual == mes:
         total_actual += venta
-        if menor > total_actual:
-            menor = total_actual
-            mes_menor = mes
 
     else:
         if mes_actual:
             if total_actual > mayor:
                 mayor = total_actual
                 mes_mayor = mes_actual
+            elif menor > total_actual:
+                menor = total_actual
+                mes_menor = mes_actual
         total_actual = venta
         mes_actual = mes
 
