@@ -33,17 +33,17 @@ for line in sys.stdin:
     # by key (here: mes) before it is passed to the reducer
     if mes_actual == mes:
         total_actual += venta
-        if total_actual >= mayor:
-            mayor = total_actual
-            mes_mayor = mes
-        elif menor <= total_actual:
-            menor = total_actual
-            mes_menor = mes
+
     else:
+        if mes_actual:
+            if total_actual >= mayor:
+                mayor = total_actual
+                mes_mayor = mes
+            elif menor <= total_actual:
+                menor = total_actual
+                mes_menor = mes
         total_actual = venta
         mes_actual = mes
-    print('Mayor: %s\t%s' % (mes_mayor, mayor))
-    print('Menor: %s\t%s' % (mes_menor, menor))
 
 # do not forget to output the last mes if needed!
 
