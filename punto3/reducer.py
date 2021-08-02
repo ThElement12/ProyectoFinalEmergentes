@@ -35,7 +35,7 @@ for line in sys.stdin:
         if total_actual >= mayor:
             mayor = total_actual
             mes_mayor = mes
-        elif total_actual <= menor:
+        elif menor <= total_actual:
             menor = total_actual
             mes_menor = mes
     else:
