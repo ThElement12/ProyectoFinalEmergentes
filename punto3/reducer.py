@@ -24,9 +24,7 @@ for line in sys.stdin:
     # convert venta (currently a string) to int
     try:
         venta = int(venta)
-        if menor == 0:
-            menor = total_actual
-            mes_menor = mes_actual
+
     except ValueError:
         # venta was not a number, so silently
         # ignore/discard this line
@@ -39,12 +37,16 @@ for line in sys.stdin:
 
     else:
         if mes_actual:
+            if menor == 0:
+                menor = total_actual
+                mes_menor = mes_actual
             if total_actual > mayor:
                 mayor = total_actual
                 mes_mayor = mes_actual
             elif menor > total_actual:
                 menor = total_actual
                 mes_menor = mes_actual
+                print("entre")
         total_actual = venta
         mes_actual = mes
 
