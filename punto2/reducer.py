@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
 """reducer.py"""
-#Mes con Mayor y Menor Venta
 from operator import itemgetter
 import sys
 
 mes_actual = None
 total_actual = 0
 mes = None
-mayor = 0
-mes_mayor = None
-menor = 0
-mes_menor = None
 
 # input comes from STDIN
 for line in sys.stdin:
@@ -32,18 +27,13 @@ for line in sys.stdin:
     # by key (here: mes) before it is passed to the reducer
     if mes_actual == mes:
         total_actual += venta
-        if total_actual >= mayor:
-            mayor = total_actual
-            mes_mayor = mes
-        elif total_actual <= menor:
-            menor = total_actual
-            mes_menor = mes
     else:
+        if mes_actual:
+            # write result to STDOUT
+            print('%s\t%s' % (mes_actual, total_actual))
         total_actual = venta
         mes_actual = mes
 
-
 # do not forget to output the last mes if needed!
-
-print('%s\t%s' % (mes_mayor, mayor))
-print('%s\t%s' % (mes_menor, menor))
+if mes_actual == mes:
+    print('%s\t%s' % (mes_actual, total_actual))
