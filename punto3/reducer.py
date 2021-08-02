@@ -36,13 +36,14 @@ for line in sys.stdin:
         if total_actual >= mayor:
             mayor = total_actual
             mes_mayor = mes
-        if menor <= total_actual:
+        elif menor <= total_actual:
             menor = total_actual
             mes_menor = mes
     else:
         total_actual = venta
         mes_actual = mes
-
+    print('Mayor: %s\t%s' % (mes_mayor, mayor))
+    print('Menor: %s\t%s' % (mes_menor, menor))
 
 # do not forget to output the last mes if needed!
 
