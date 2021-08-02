@@ -20,10 +20,12 @@ for line in sys.stdin:
     # parse the input we got from mapper.py
     mes, venta = line.split()
 
+
     # convert venta (currently a string) to int
     try:
         venta = int(venta)
-        total_actual = int(total_actual)
+        if menor == 0:
+            menor = venta
     except ValueError:
         # venta was not a number, so silently
         # ignore/discard this line
@@ -36,12 +38,12 @@ for line in sys.stdin:
 
     else:
         if mes_actual:
-            if total_actual >= mayor:
+            if total_actual > mayor:
                 mayor = total_actual
-                mes_mayor = mes
-            elif menor <= total_actual:
+                mes_mayor = mes_actual
+            elif total_actual < menor:
                 menor = total_actual
-                mes_menor = mes
+                mes_menor = mes_actual
         total_actual = venta
         mes_actual = mes
 
