@@ -23,6 +23,7 @@ for line in sys.stdin:
     # convert venta (currently a string) to int
     try:
         venta = int(venta)
+        total_actual = int(total_actual)
     except ValueError:
         # venta was not a number, so silently
         # ignore/discard this line
@@ -35,7 +36,7 @@ for line in sys.stdin:
         if total_actual >= mayor:
             mayor = total_actual
             mes_mayor = mes
-        elif menor <= total_actual:
+        if menor <= total_actual:
             menor = total_actual
             mes_menor = mes
     else:
@@ -45,5 +46,5 @@ for line in sys.stdin:
 
 # do not forget to output the last mes if needed!
 
-print('%s\t%s' % (mes_mayor, mayor))
-print('%s\t%s' % (mes_menor, menor))
+print('Mayor: %s\t%s' % (mes_mayor, mayor))
+print('Menor: %s\t%s' % (mes_menor, menor))
