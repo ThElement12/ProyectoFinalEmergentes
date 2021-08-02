@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 """reducer.py"""
-#Mes con Mayor y Menor Venta
+# Mes con Mayor y Menor Venta
 from operator import itemgetter
 import sys
 
-mes_actual = None
+ciudad_actual = None
 total_actual = 0
-mes = None
+ciudad = None
 mayor = 0
-mes_mayor = None
-menor = 0
-mes_menor = None
+ciudad_mayor = None
 
 # input comes from STDIN
 for line in sys.stdin:
@@ -18,8 +16,7 @@ for line in sys.stdin:
     line = line.strip(' ')
 
     # parse the input we got from mapper.py
-    mes, venta = line.split()
-
+    ciudad, venta = line.split()
 
     # convert venta (currently a string) to int
     try:
@@ -32,25 +29,18 @@ for line in sys.stdin:
 
     # this IF-switch only works because Hadoop sorts map output
     # by key (here: mes) before it is passed to the reducer
-    if mes_actual == mes:
+    if ciudad_actual == ciudad:
         total_actual += venta
 
     else:
-        if mes_actual:
-            if menor == 0:
-                menor = total_actual
-                mes_menor = mes_actual
+        if ciudad_actual:
             if total_actual > mayor:
                 mayor = total_actual
-                mes_mayor = mes_actual
-            elif menor > total_actual:
-                menor = total_actual
-                mes_menor = mes_actual
+                mes_mayor = ciudad_actual
 
         total_actual = venta
-        mes_actual = mes
+        ciudad_actual = ciudad
 
 # do not forget to output the last mes if needed!
 
-print('Mayor: %s\t%s' % (mes_mayor, mayor))
-print('Menor: %s\t%s' % (mes_menor, menor))
+print('Ciudad Con mayor venta: %s\t%s' % (mes_mayor, mayor))
