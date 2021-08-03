@@ -51,6 +51,11 @@ for line in sys.stdin:
         mes_actual = mes
 
 # do not forget to output the last mes if needed!
+        if mes_actual:
+
+            if menor > total_actual:
+                menor = total_actual
+                mes_menor = mes_actual
 
 print('Mayor: %s\t%s' % (mes_mayor, mayor))
 print('Menor: %s\t%s' % (mes_menor, menor))
